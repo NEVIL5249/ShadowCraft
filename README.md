@@ -1,25 +1,21 @@
 # ShadowCraft
+
 <p align="center">
-```
-Precision Volumetric Shadow System for Tailwind CSS
-```{=html}
+  Precision Volumetric Shadow System for Tailwind CSS
 </p>
-```
-```{=html}
+
 <p align="center">
-```
-`<a href="https://www.npmjs.com/package/@nevil5249/shadowcraft">`{=html}
-`<img src="https://img.shields.io/npm/v/@nevil5249/shadowcraft?color=000000" />`{=html}
-`</a>`{=html}
-`<a href="https://www.npmjs.com/package/@nevil5249/shadowcraft">`{=html}
-`<img src="https://img.shields.io/npm/dm/@nevil5249/shadowcraft" />`{=html}
-`</a>`{=html} `<a href="https://shadowcraft.nevilgadhia.in">`{=html}
-`<img src="https://img.shields.io/badge/Website-Live-black" />`{=html}
-`</a>`{=html}
-`<img src="https://img.shields.io/badge/License-MIT-black" />`{=html}
-```{=html}
+  <a href="https://www.npmjs.com/package/@nevil5249/shadowcraft">
+    <img src="https://img.shields.io/npm/v/@nevil5249/shadowcraft?color=000000">
+  </a>
+  <a href="https://www.npmjs.com/package/@nevil5249/shadowcraft">
+    <img src="https://img.shields.io/npm/dm/@nevil5249/shadowcraft">
+  </a>
+  <a href="https://shadowcraft.nevilgadhia.in">
+    <img src="https://img.shields.io/badge/Website-Live-black">
+  </a>
+  <img src="https://img.shields.io/badge/License-MIT-black">
 </p>
-```
 
 ------------------------------------------------------------------------
 
