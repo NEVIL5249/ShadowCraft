@@ -90,7 +90,10 @@ const CONTENT = {
       code: `export default function Page() {
   return (
     <main className="min-h-screen p-24">
-      <div className="shd-floating-modal bg-white border border-slate-200">
+      <div
+        className="shd-floating-modal bg-white 
+                   border border-slate-200"
+      >
         Engineered precision in Next.js
       </div>
     </main>
@@ -139,7 +142,11 @@ const CONTENT = {
 </head>
 <body class="bg-slate-50 p-12">
   <div class="shd-glass-panel bg-white/80 p-8">
-    <h1 class="font-sans text-2xl font-bold">Pure HTML Integration</h1>
+    <h1 
+      class="font-sans text-2xl font-bold"
+    >
+      Pure HTML Integration
+    </h1>
   </div>
 </body>
 </html>`,
