@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Copy, Check } from 'lucide-react';
 
 const Hero = () => {
+  const [copied, setCopied] = useState(false);
+  const installCmd = "npm install shadowcraft";
+
+  const copyCommand = () => {
+    navigator.clipboard.writeText(installCmd);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <section className="relative pt-24 pb-16 border-b border-slate-200 blueprint-bg overflow-hidden">
+    <section className="relative pt-11 pb-16 border-b border-slate-200 blueprint-bg overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start max-w-3xl">
@@ -15,12 +25,12 @@ const Hero = () => {
               <span className="italic font-serif font-normal text-slate-500">Volumetric</span> <br/>
               Interface Shadows.
             </h1>
-            <p className="font-serif text-xl text-slate-600 leading-relaxed mb-12 max-w-xl italic">
+            <p className="font-serif text-xl text-slate-600 leading-relaxed mb-8 max-w-xl italic">
               A technical framework for multi-layered CSS shadows designed with mathematical precision and structural integrity.
             </p>
             <div className="flex gap-4">
               <button className="bg-slate-900 text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-800 hover:shadow-ui-button-hover transition-all">
-                Explore Blueprint
+                Explore Shadows
               </button>
               <button className="border border-slate-200 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-50 hover:shadow-ui-nav transition-all">
                 Read Docs
@@ -39,14 +49,23 @@ const Hero = () => {
                 </div>
                 
                 <div className="bg-slate-900 p-6 rounded-none relative">
-                   <div className="flex gap-2 mb-4">
-                     <div className="w-2 h-2 rounded-full bg-slate-700"></div>
-                     <div className="w-2 h-2 rounded-full bg-slate-700"></div>
-                     <div className="w-2 h-2 rounded-full bg-slate-700"></div>
+                   <div className="flex justify-between items-start mb-4">
+                     <div className="flex gap-2">
+                       <div className="w-2 h-2 rounded-full bg-slate-700"></div>
+                       <div className="w-2 h-2 rounded-full bg-slate-700"></div>
+                       <div className="w-2 h-2 rounded-full bg-slate-700"></div>
+                     </div>
+                     <button 
+                       onClick={copyCommand}
+                       className="text-slate-500 hover:text-white transition-colors p-1"
+                       aria-label="Copy Command"
+                     >
+                       {copied ? <Check size={14} className="text-blueprint-accent" /> : <Copy size={14} />}
+                     </button>
                    </div>
                    <code className="text-white font-mono text-sm block">
                      <span className="text-blueprint-accent mr-2">$</span>
-                     npm install shadowcraft
+                     {installCmd}
                    </code>
                    <div className="absolute bottom-4 right-4 text-[9px] font-mono text-slate-600">sh_v4.0</div>
                 </div>

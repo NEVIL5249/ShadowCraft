@@ -37,11 +37,9 @@ const ShadowGrid = () => {
             <ShadowCard shadow={shadows[3]} variant="blueprint" corner="none" padding="p-16" />
           </div>
         </div>
-        <div className="flex justify-center mt-12">
-          <Link to="/library" className="bg-slate-900 text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-slate-800 transition-all mb-2 flex items-center gap-2 group whitespace-nowrap">
-            Explore All 
-            <span className="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-          </Link>
+        <div className="flex justify-center mt-22">
+                    <a className="text-xs font-bold uppercase tracking-[0.2em] border-b border-slate-900 pb-1" href="/library">View All</a>
+
         </div>
       </div>
     </section>
