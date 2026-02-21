@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-blueprint-grid: #e5e7eb;
+  --color-blueprint-accent: #135bec;
+  --color-charcoal: #1a1a1a;
+  --color-blueprint-bg: #fbfbfb;
+
+  --shadow-layered-subtle: 0 1px 2px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.02), 0 4px 8px rgba(0,0,0,0.02);
+  --shadow-layered-deep-inset: inset 0 2px 4px rgba(0,0,0,0.04), inset 0 4px 8px rgba(0,0,0,0.04), inset 0 8px 16px rgba(0,0,0,0.04);
+  --shadow-layered-glass: 0 4px 12px rgba(19, 91, 236, 0.08), 0 0 0 1px rgba(19, 91, 236, 0.05);
+  --shadow-layered-floating: 0 2px 4px rgba(0,0,0,0.02), 0 8px 16px rgba(0,0,0,0.03), 0 16px 32px rgba(0,0,0,0.04), 0 32px 64px rgba(0,0,0,0.05);
+
+  --shadow-ui-nav: 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-ui-terminal: 0 30px 60px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.05);
+  --shadow-ui-card: 0 15px 35px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.03);
+  --shadow-ui-button-hover: 0 10px 20px rgba(19, 91, 236, 0.15), 0 0 0 1px rgba(19, 91, 236, 0.1);
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-blueprint-bg text-slate-900 antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .blueprint-bg {
+    background-image: 
+        linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+        linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .grid-extended::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    bottom: -20px;
+    left: 0;
+    width: 1px;
+    background: #e5e7eb;
+  }
+
+  .grid-extended::after {
+    content: '';
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    top: 0;
+    height: 1px;
+    background: #e5e7eb;
+  }
+}
+
+@utility shadow-layered-subtle {
+  box-shadow: var(--shadow-layered-subtle);
+}
+
+@utility shadow-layered-deep-inset {
+  box-shadow: var(--shadow-layered-deep-inset);
+}
+
+@utility shadow-layered-glass {
+  box-shadow: var(--shadow-layered-glass);
+}
+
+@utility shadow-layered-floating {
+  box-shadow: var(--shadow-layered-floating);
+}
+
+@utility shadow-ui-nav {
+  box-shadow: var(--shadow-ui-nav);
+}
+
+@utility shadow-ui-terminal {
+  box-shadow: var(--shadow-ui-terminal);
+}
+
+@utility shadow-ui-card {
+  box-shadow: var(--shadow-ui-card);
+}
+
+@utility shadow-ui-button-hover {
+  box-shadow: var(--shadow-ui-button-hover);
+}
