@@ -34,13 +34,14 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
   };
 
   return (
-    <div className={`group relative ${padding} ${variant === 'glass' ? 'bg-slate-100/30' : 'bg-white'} border border-slate-200 transition-all hover:border-slate-300 overflow-hidden`}>
-      {variant === 'blueprint' && <div className="absolute inset-0 blueprint-bg opacity-10 pointer-events-none"></div>}
+    <div className="relative group h-full">
       {corner !== 'none' && (
-        <div className={`absolute w-4 h-4 border-slate-900 opacity-0 group-hover:opacity-100 transition-all ${getCornerClass()}`}></div>
+        <div className={`absolute w-8 h-8 border-slate-900 z-20 ${getCornerClass()}`}></div>
       )}
-      
-      <div className="relative z-10">
+      <div className={`relative h-full ${padding} ${variant === 'glass' ? 'bg-slate-100/30' : 'bg-white'} border border-slate-200 transition-all group-hover:border-slate-300 overflow-hidden`}>
+        {variant === 'blueprint' && <div className="absolute inset-0 blueprint-bg opacity-10 pointer-events-none"></div>}
+        
+        <div className="relative z-10">
         <div className="flex justify-between items-start mb-12">
           <div className="space-y-1">
             <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">{shadow.id}. {shadow.name}</h3>
@@ -96,6 +97,7 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
           <div className="text-[10px] font-bold uppercase tracking-widest text-slate-300">
             REF: {shadow.ref}
           </div>
+        </div>
         </div>
       </div>
     </div>

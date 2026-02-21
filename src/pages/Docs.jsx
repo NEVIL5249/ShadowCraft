@@ -22,21 +22,20 @@ const CONTENT = {
       step: '02',
       title: 'Configure Tailwind plugin',
       description: 'Add the plugin to your tailwind.config.js (or .ts) to expose the volumetric shadows to your utility classes.',
-      code: `// tailwind.config.js
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require('@nevil5249/shadowcraft')
-  ],
-}`,
-      lang: 'javascript',
-      titleLabel: 'tailwind.config.js'
+      codeBlocks: [
+        {
+          label: 'Tailwind v4 (Recommended)',
+          titleLabel: 'index.css (Tailwind v4)',
+          code: '@import "tailwindcss";\n@plugin "@nevil5249/shadowcraft";',
+          lang: 'css'
+        },
+        {
+          label: 'Tailwind v3 (Legacy support)',
+          titleLabel: 'tailwind.config.js (Tailwind v3)',
+          code: 'module.exports = {\n  plugins: [\n    require(\'@nevil5249/shadowcraft\')\n  ],\n}',
+          lang: 'javascript'
+        }
+      ]
     },
     {
       step: '03',
@@ -69,25 +68,20 @@ export default {
       step: '02',
       title: 'Configure Tailwind',
       description: 'Modify your Next.js tailwind.config.ts file to include the plugin.',
-      code: `import type { Config } from "tailwindcss";
-
-const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require('@nevil5249/shadowcraft')
-  ],
-};
-
-export default config;`,
-      lang: 'typescript',
-      titleLabel: 'tailwind.config.ts'
+      codeBlocks: [
+        {
+          label: 'Tailwind v4 (Recommended)',
+          titleLabel: 'index.css (Tailwind v4)',
+          code: '@import "tailwindcss";\n@plugin "@nevil5249/shadowcraft";',
+          lang: 'css'
+        },
+        {
+          label: 'Tailwind v3 (Legacy support)',
+          titleLabel: 'tailwind.config.js (Tailwind v3)',
+          code: 'module.exports = {\n  plugins: [\n    require(\'@nevil5249/shadowcraft\')\n  ],\n}',
+          lang: 'javascript'
+        }
+      ]
     },
     {
       step: '03',
@@ -119,18 +113,20 @@ export default config;`,
       step: '02',
       title: 'Update Tailwind CLI config',
       description: 'Add the plugin required to generate the multi-layered CSS rules.',
-      code: `/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{html,js}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require('@nevil5249/shadowcraft')
-  ],
-}`,
-      lang: 'javascript',
-      titleLabel: 'tailwind.config.js'
+      codeBlocks: [
+        {
+          label: 'Tailwind v4 (Recommended)',
+          titleLabel: 'index.css (Tailwind v4)',
+          code: '@import "tailwindcss";\n@plugin "@nevil5249/shadowcraft";',
+          lang: 'css'
+        },
+        {
+          label: 'Tailwind v3 (Legacy support)',
+          titleLabel: 'tailwind.config.js (Tailwind v3)',
+          code: 'module.exports = {\n  plugins: [\n    require(\'@nevil5249/shadowcraft\')\n  ],\n}',
+          lang: 'javascript'
+        }
+      ]
     },
     {
       step: '03',
@@ -183,7 +179,7 @@ const Docs = () => {
           </div>
           <div className="flex items-center gap-4 text-sm font-mono text-slate-700">
             <Layers size={16} className="text-blueprint-accent" />
-            <span>Tailwind CSS v3.0+</span>
+            <span>Tailwind CSS v3.0+ or v4.0+</span>
           </div>
           <div className="flex items-center gap-4 text-sm font-mono text-slate-700">
             <Box size={16} className="text-blueprint-accent" />
@@ -232,10 +228,28 @@ const Docs = () => {
 
               {/* Code */}
               <div className="md:w-2/3 mt-4 md:mt-0">
-                <CodeBlock 
-                  code={item.code} 
-                  title={item.titleLabel} 
-                />
+                {item.codeBlocks ? (
+                  <div className="flex flex-col gap-6">
+                    {item.codeBlocks.map((block, i) => (
+                      <div key={i}>
+                        {block.label && (
+                          <div className="text-sm font-semibold text-slate-600 mb-2">
+                            {block.label}
+                          </div>
+                        )}
+                        <CodeBlock 
+                          code={block.code} 
+                          title={block.titleLabel} 
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <CodeBlock 
+                    code={item.code} 
+                    title={item.titleLabel} 
+                  />
+                )}
               </div>
 
             </div>

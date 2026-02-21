@@ -126,7 +126,7 @@ const Library = () => {
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     className="h-full"
                   >
-                    <ShadowCard shadow={shadow} padding="p-6 md:p-8" />
+                    <ShadowCard shadow={shadow} padding="p-6 md:p-8" corner="none" />
                   </motion.div>
                 ))}
               </AnimatePresence>

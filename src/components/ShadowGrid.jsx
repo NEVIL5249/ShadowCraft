@@ -34,7 +34,7 @@ const ShadowGrid = () => {
             <ShadowCard shadow={shadows[2]} variant="glass" corner="bottom-left" padding="p-10" />
           </div>
           <div className="md:col-span-6">
-            <ShadowCard shadow={shadows[3]} variant="blueprint" corner="none" padding="p-16" />
+            <ShadowCard shadow={shadows[3]} variant="blueprint" corner="bottom-right" padding="p-16" />
           </div>
         </div>
         <div className="flex justify-center mt-22">
