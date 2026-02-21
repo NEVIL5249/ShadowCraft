@@ -28,7 +28,7 @@ const Playground = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 blueprint-bg min-height-screen">
+    <div className="pt-12 pb-24 blueprint-bg min-height-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
