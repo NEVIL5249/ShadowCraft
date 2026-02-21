@@ -26,6 +26,13 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
     }
   };
 
+  const getTailwindValue = (css) => {
+    if (!css) return '';
+    const cleanValue = css.replace('box-shadow: ', '').replace(';', '');
+    // Replace spaces with underscores for Tailwind arbitrary values
+    return `shadow-[${cleanValue.replace(/ /g, '_')}]`;
+  };
+
   return (
     <div className={`group relative ${padding} ${variant === 'glass' ? 'bg-slate-100/30' : 'bg-white'} border border-slate-200 transition-all hover:border-slate-300 overflow-hidden`}>
       {variant === 'blueprint' && <div className="absolute inset-0 blueprint-bg opacity-10 pointer-events-none"></div>}
@@ -46,9 +53,9 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
           </div>
           <div className="flex gap-2">
             <button 
-              onClick={() => copyToClipboard(shadow.className, 'tailwind')}
+              onClick={() => copyToClipboard(getTailwindValue(shadow.css), 'tailwind')}
               className="p-2 border border-slate-100 opacity-0 group-hover:opacity-100 transition-all hover:border-blueprint-accent hover:text-blueprint-accent relative"
-              title="Copy Tailwind Class"
+              title="Copy Tailwind Arbitrary Value"
             >
               <TailwindIcon size={16} />
               {copiedType === 'tailwind' && <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 text-white px-2 py-1 rounded">Copied!</span>}

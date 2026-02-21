@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CTA = () => {
   return (
@@ -13,10 +13,12 @@ const CTA = () => {
           Implement professional-grade depth in your UI within minutes. Join thousands of design engineers building better web software.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="bg-white text-slate-900 px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-100 transition-all w-full sm:w-auto">
+          <Link to="/library" className="bg-white text-slate-900 px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-100 transition-all w-full sm:w-auto inline-block">
             Start Project Free
-          </button>
-          <a className="text-xs font-bold uppercase tracking-[0.2em] border-b border-white pb-1" href="#">Technical Manual</a>
+          </Link>
+          <Link to="/docs" className="text-xs font-bold uppercase tracking-[0.2em] border-b border-white pb-1 hover:text-slate-300 hover:border-slate-300 transition-colors">
+            Technical Manual
+          </Link>
         </div>
       </div>
     </section>

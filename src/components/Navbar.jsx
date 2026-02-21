@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ onOpenContact }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const activeClass = "text-xs font-bold uppercase tracking-widest text-slate-900 transition-colors";
@@ -26,14 +26,25 @@ const Navbar = () => {
             <NavLink to="/" end className={({ isActive }) => isActive ? activeClass : inactiveClass}>Home</NavLink>
             <NavLink to="/library" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Library</NavLink>
             <NavLink to="/playground" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Playground</NavLink>
+            <NavLink to="/docs" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Docs</NavLink>
           </nav>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-6">
-            <button className="text-xs font-bold uppercase tracking-widest border-b border-slate-900 pb-0.5">Contact</button>
-            <button className="bg-slate-900 text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-slate-800 transition-all">
-              Get Access
+            <button 
+              onClick={onOpenContact}
+              className="text-xs font-bold uppercase tracking-widest border-b cursor-pointer border-slate-900 pb-0.5"
+            >
+              Contact
             </button>
+            <a 
+              href="https://www.npmjs.com/package/@nevil5249/shadowcraft"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-900 text-white px-6 py-2 cursor-pointer text-xs font-bold uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center gap-2"
+            >
+              NPM Registry <span className="text-slate-400 text-[9px]">v1.0.1</span>
+            </a>
           </div>
 
           {/* Mobile menu toggle */}
@@ -92,13 +103,30 @@ const Navbar = () => {
             >
               Playground
             </NavLink>
+            <NavLink 
+              to="/docs" 
+              className={({ isActive }) => `${isActive ? 'text-slate-900' : 'text-slate-400'} text-xl font-bold uppercase tracking-widest`} 
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Docs
+            </NavLink>
           </nav>
           
           <div className="mt-12 pt-12 border-t border-slate-100 flex flex-col space-y-6">
-            <button className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 hover:text-slate-900 self-start">Contact</button>
-            <button className="bg-slate-900 text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.3em] hover:bg-slate-800 transition-all w-full">
-              Get Access
+            <button 
+              onClick={() => { onOpenContact(); setIsMobileMenuOpen(false); }}
+              className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 hover:text-slate-900 self-start text-left"
+            >
+              Contact
             </button>
+            <a 
+              href="https://www.npmjs.com/package/@nevil5249/shadowcraft"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-900 text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.3em] hover:bg-slate-800 transition-all w-full text-center"
+            >
+              View on NPM
+            </a>
           </div>
           
           <div className="mt-auto flex items-center gap-3 border-t border-slate-50 pt-8">

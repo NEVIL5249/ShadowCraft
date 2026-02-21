@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   const [copied, setCopied] = useState(false);
-  const installCmd = "npm install shadowcraft";
+  const installCmd = "npm install @nevil5249/shadowcraft";
 
   const copyCommand = () => {
     navigator.clipboard.writeText(installCmd);
@@ -15,7 +17,12 @@ const Hero = () => {
     <section className="relative pt-11 pb-16 border-b border-slate-200 blueprint-bg overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col items-start max-w-3xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-start max-w-3xl"
+          >
             <div className="flex items-center gap-2 mb-8">
               <span className="h-[1px] w-12 bg-slate-400"></span>
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">System v4.0.1</span>
@@ -29,16 +36,21 @@ const Hero = () => {
               A technical framework for multi-layered CSS shadows designed with mathematical precision and structural integrity.
             </p>
             <div className="flex gap-4">
-              <button className="bg-slate-900 text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-800 hover:shadow-ui-button-hover transition-all">
+              <Link to="/library" className="bg-slate-900 text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-800 hover:shadow-ui-button-hover transition-all">
                 Explore Shadows
-              </button>
-              <button className="border border-slate-200 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-50 hover:shadow-ui-nav transition-all">
+              </Link>
+              <Link to="/docs" className="border border-slate-200 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-slate-50 hover:shadow-ui-nav transition-all">
                 Read Docs
-              </button>
+              </Link>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative group">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative group"
+          >
             <div className="absolute -top-[1px] -right-[1px] w-8 h-8 border-t border-r border-slate-900 z-20"></div>
             <div className="bg-white border border-slate-200 p-8 relative overflow-hidden shadow-ui-terminal group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-all duration-500">
               <div className="absolute inset-0 blueprint-bg opacity-5 pointer-events-none"></div>
@@ -76,7 +88,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="absolute bottom-4 right-8 text-[10px] font-mono text-slate-300 pointer-events-none hidden lg:block">
