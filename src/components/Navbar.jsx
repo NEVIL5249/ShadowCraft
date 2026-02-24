@@ -43,7 +43,7 @@ const Navbar = ({ onOpenContact }) => {
               rel="noopener noreferrer"
               className="bg-slate-900 text-white px-6 py-2 cursor-pointer text-xs font-bold uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center gap-2"
             >
-              NPM Registry <span className="text-slate-400 text-[9px]">v1.0.1</span>
+              NPM Registry <span className="text-slate-400 text-[9px]">v1.0.7</span>
             </a>
           </div>
 
