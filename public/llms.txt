@@ -1,0 +1,45 @@
+# ShadowCraft
+> Premium Tailwind CSS shadow library with multi-layer volumetric box-shadow utilities.
+
+ShadowCraft is a production-ready design system for UI depth. It ships as an npm Tailwind CSS plugin (@nevil5249/shadowcraft) and includes a documentation website with a browsable shadow library and interactive playground.
+
+## Primary URLs
+- Website: https://shadowcraft.nevilgadhia.in
+- NPM Package: https://www.npmjs.com/package/@nevil5249/shadowcraft
+- GitHub: https://github.com/nevil5249
+- Author: https://www.nevilgadhia.in
+
+## Pages
+- Home: https://shadowcraft.nevilgadhia.in/ — Overview, features, installation
+- Library: https://shadowcraft.nevilgadhia.in/library — Browse shadows by category
+- Playground: https://shadowcraft.nevilgadhia.in/playground — Real-time multi-layer shadow generator
+- Docs: https://shadowcraft.nevilgadhia.in/docs — React, Next.js, HTML integration guides
+- Legal: https://shadowcraft.nevilgadhia.in/legal — Terms, privacy, security
+
+## What ShadowCraft Provides
+- Handcrafted box-shadow utilities (classes like shd-subtle-01, shd-floating-modal, shd-glass)
+- Categories: Elevation, Inset, Glass, Floating, Ambient, Structural, Crisp, Diffused, Blueprint, Volumetric, Geometric, Micro, Colorful, Neumorphism, Material, Directional, Glow, Dark Mode, Skeuomorphic, Cinematic
+- Tailwind CSS v4 and v3 support
+- Copy-to-clipboard: class names, raw CSS, Tailwind arbitrary values
+
+## Installation
+```bash
+npm install @nevil5249/shadowcraft
+```
+
+Tailwind v4:
+```css
+@import "tailwindcss";
+@plugin "@nevil5249/shadowcraft";
+```
+
+Tailwind v3:
+```js
+plugins: [require('@nevil5249/shadowcraft')]
+```
+
+## Keywords
+tailwind css shadows, box shadow plugin, volumetric shadows, multi-layer shadows, ui depth, elevation shadows, neumorphism, material design shadows, dark mode shadows, shadow generator, css shadow library, tailwind utility classes, saas design system
+
+## License
+MIT — Nevil Gadhia

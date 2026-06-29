@@ -9,6 +9,7 @@ import Legal from './pages/Legal';
 import Docs from './pages/Docs';
 import ContactModal from './components/ContactModal';
 import ScrollToTop from './components/ScrollToTop';
+import SEO from './components/SEO';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <Router>
+      <SEO />
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar onOpenContact={() => setIsContactModalOpen(true)} />

@@ -1,0 +1,27 @@
+# ShadowCraft — https://shadowcraft.nevilgadhia.in
+User-agent: *
+Allow: /
+
+# AI crawlers — welcome to index for search & discovery
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://shadowcraft.nevilgadhia.in/sitemap.xml
