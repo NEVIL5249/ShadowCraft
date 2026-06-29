@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { shadows } from '../data/shadows';
 import ShadowCard from '../components/ShadowCard';
-import { Search, Filter, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Filter, X, Plus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CATEGORIES = [
@@ -16,7 +16,7 @@ const ITEMS_PER_PAGE = 9;
 const Library = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('ALL');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   const filteredShadows = useMemo(() => {
     return shadows.filter((shadow) => {
@@ -27,28 +27,17 @@ const Library = () => {
     });
   }, [searchQuery, activeCategory]);
 
-  // Reset to first page when search or category changes
   useEffect(() => {
-    setCurrentPage(1);
+    setVisibleCount(ITEMS_PER_PAGE);
   }, [searchQuery, activeCategory]);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-    
-    // Scroll to the top of the grid with an offset for the sticky navbar
-    const grid = document.getElementById('library-grid');
-    if (grid) {
-      const offset = 100; // Approximate height of navbar + some padding
-      const y = grid.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
+  const visibleShadows = filteredShadows.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredShadows.length;
+  const remainingCount = filteredShadows.length - visibleCount;
 
-  const totalPages = Math.ceil(filteredShadows.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedShadows = filteredShadows.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => Math.min(prev + ITEMS_PER_PAGE, filteredShadows.length));
+  };
 
   return (
     <div className="pt-12 pb-32 min-h-screen bg-white">
@@ -117,7 +106,7 @@ const Library = () => {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
             >
               <AnimatePresence mode="popLayout">
-                {paginatedShadows.map((shadow, index) => (
+                {visibleShadows.map((shadow, index) => (
                   <motion.div 
                     key={shadow.id} 
                     layout
@@ -133,29 +122,21 @@ const Library = () => {
               </AnimatePresence>
             </motion.div>
 
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-              <div className="mt-16 flex items-center justify-between border-t border-slate-100 pt-8">
-                <button 
-                  onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
-                  disabled={currentPage === 1}
-                  className={`flex items-center gap-2 px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] border transition-all ${
-                    currentPage === 1 ? 'border-slate-100 text-slate-300 cursor-not-allowed' : 'border-slate-200 text-slate-600 hover:border-slate-900 hover:text-slate-900'
-                  }`}
-                >
-                  <ChevronLeft size={14} /> Previous
-                </button>
-                <div className="text-[10px] font-mono font-bold text-slate-500 tracking-widest uppercase">
-                  Page {currentPage} of {totalPages}
+            {/* Load More */}
+            {hasMore && (
+              <div className="mt-16 flex flex-col items-center border-t border-slate-100 pt-8 gap-4">
+                <div className="text-[10px] font-mono font-bold text-slate-400 tracking-widest uppercase">
+                  Showing {visibleShadows.length} of {filteredShadows.length}
                 </div>
-                <button 
-                  onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
-                  disabled={currentPage === totalPages}
-                  className={`flex items-center gap-2 px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] border transition-all ${
-                    currentPage === totalPages ? 'border-slate-100 text-slate-300 cursor-not-allowed' : 'border-slate-200 text-slate-600 hover:border-slate-900 hover:text-slate-900'
-                  }`}
+                <button
+                  onClick={handleLoadMore}
+                  className="flex items-center gap-3 px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] border border-slate-200 text-slate-600 hover:border-slate-900 hover:text-slate-900 transition-all"
                 >
-                  Next <ChevronRight size={14} />
+                  <Plus size={14} />
+                  Load More
+                  <span className="text-slate-400 font-mono normal-case tracking-normal">
+                    ({remainingCount} remaining)
+                  </span>
                 </button>
               </div>
             )}
@@ -183,6 +164,7 @@ const Library = () => {
           <div className="flex gap-8">
             <span>total_entries: {shadows.length}</span>
             <span>active_filter: {activeCategory}</span>
+            <span>loaded: {visibleShadows.length}</span>
             <span>visible: {filteredShadows.length}</span>
           </div>
           <div>sys_status: optimized_ready</div>
