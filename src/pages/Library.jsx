@@ -124,13 +124,10 @@ const Library = () => {
 
             {/* Load More */}
             {hasMore && (
-              <div className="mt-16 flex flex-col items-center border-t border-slate-100 pt-8 gap-4">
-                <div className="text-[10px] font-mono font-bold text-slate-400 tracking-widest uppercase">
-                  Showing {visibleShadows.length} of {filteredShadows.length}
-                </div>
+              <div className="mt-16 flex flex-col items-center pt-8">
                 <button
                   onClick={handleLoadMore}
-                  className="flex items-center gap-3 px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] border border-slate-200 text-slate-600 hover:border-slate-900 hover:text-slate-900 transition-all"
+                  className="flex items-center gap-3 bg-slate-900 text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-slate-800 hover:shadow-ui-button-hover transition-all"
                 >
                   <Plus size={14} />
                   Load More
