@@ -5,9 +5,10 @@ import { Search, Filter, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CATEGORIES = [
-  'ALL',  'ELEVATION', 'INSET', 'GLASS', 'FLOATING', 'AMBIENT', 
-  'STRUCTURAL', 'CRISP', 'DIFFUSED', 'BLUEPRINT', 'VOLUMETRIC', 
-  'GEOMETRIC', 'MICRO','COLORFUL'
+  'ALL', 'ELEVATION', 'INSET', 'GLASS', 'FLOATING', 'AMBIENT',
+  'STRUCTURAL', 'CRISP', 'DIFFUSED', 'BLUEPRINT', 'VOLUMETRIC',
+  'GEOMETRIC', 'MICRO', 'COLORFUL', 'NEUMORPHISM', 'MATERIAL',
+  'DIRECTIONAL', 'GLOW', 'DARK MODE', 'SKEUOMORPHIC', 'CINEMATIC'
 ];
 
 const ITEMS_PER_PAGE = 9;
