@@ -50,7 +50,7 @@ const Footer = ({ onOpenContact }) => {
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] font-mono text-slate-400 uppercase tracking-widest">
           <div className="flex items-center gap-8">
             <span>© 2026 ShadowCraft</span>
-            <span className="hidden md:inline">v1.0.0_BETA</span>
+            <span className="hidden md:inline">v1.1.0</span>
           </div>
           <div className="flex items-center gap-8">
             <span>Designer: @nevil5249</span>
