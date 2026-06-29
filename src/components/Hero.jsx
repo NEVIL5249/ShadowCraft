@@ -25,7 +25,7 @@ const Hero = () => {
           >
             <div className="flex items-center gap-2 mb-8">
               <span className="h-[1px] w-12 bg-slate-400"></span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">System v4.0.1</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">System v1.1.0</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-light tracking-tighter text-slate-900 leading-[0.9] mb-8">
               Precision <br/>

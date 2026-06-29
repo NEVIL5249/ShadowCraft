@@ -1,6 +1,6 @@
 {
   "name": "@nevil5249/shadowcraft",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "A premium design framework for multi-layered interface depth and structural volumetric fidelity via Tailwind CSS.",
   "main": "index.js",
   "type": "module",
