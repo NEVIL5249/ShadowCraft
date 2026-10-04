@@ -52,11 +52,11 @@ const presets = [
 
 const RevenueCard = ({ shadow, className = '' }) => (
   <div
-    className={`rounded-[18px] bg-white p-5 sm:p-6 ${className}`}
+    className={`rounded-2xl bg-white p-4 sm:p-5 lg:p-6 ${className}`}
     style={{ boxShadow: shadow }}
   >
-    <div className="flex items-center justify-between mb-4">
-      <p className="text-[13px] font-medium text-[#6b7280]">Total Revenue</p>
+    <div className="flex items-center justify-between mb-3 sm:mb-4">
+      <p className="text-xs sm:text-[13px] font-medium text-[#6b7280]">Total Revenue</p>
       <button
         type="button"
         className="text-[#9ca3af] hover:text-[#6b7280] transition-colors"
@@ -66,13 +66,14 @@ const RevenueCard = ({ shadow, className = '' }) => (
       </button>
     </div>
 
-    <p className="text-[2rem] sm:text-[2.15rem] font-semibold tracking-tight text-[#111111] leading-none mb-4">
+    <p className="text-[1.75rem] sm:text-[2rem] lg:text-[2.15rem] font-semibold tracking-tight text-[#111111] leading-none mb-3 sm:mb-4">
       $12,480
     </p>
 
-    <div className="inline-flex items-center gap-1.5 rounded-full bg-[#ecfdf5] px-2.5 py-1 text-[12px] font-medium text-[#059669]">
+    <div className="inline-flex items-center gap-1.5 rounded-full bg-[#ecfdf5] px-2.5 py-1 text-[11px] sm:text-[12px] font-medium text-[#059669]">
       <ArrowUpRight size={12} strokeWidth={2.5} />
-      12.4% vs last month
+      <span className="sm:hidden">+12.4%</span>
+      <span className="hidden sm:inline">12.4% vs last month</span>
     </div>
   </div>
 );
@@ -125,10 +126,10 @@ const Hero = () => {
 
             <button
               onClick={copyCommand}
-              className="group inline-flex items-center gap-3 rounded-xl border border-[#e7e7e5] bg-[#f3f3f1] px-4 py-3 text-left transition-colors hover:bg-[#efefed]"
+              className="group inline-flex items-center gap-3 w-full sm:w-auto max-w-full rounded-xl border border-[#e7e7e5] bg-[#f3f3f1] px-4 py-3 text-left transition-colors hover:bg-[#efefed]"
             >
-              <span className="font-mono text-[13px] text-[#4b5563]">{installCmd}</span>
-              <span className="text-[#9ca3af] group-hover:text-ink transition-colors">
+              <span className="font-mono text-[12px] sm:text-[13px] text-[#4b5563] truncate">{installCmd}</span>
+              <span className="shrink-0 text-[#9ca3af] group-hover:text-ink transition-colors">
                 {copied ? <Check size={15} /> : <Copy size={15} />}
               </span>
             </button>
@@ -141,19 +142,19 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="w-full"
           >
-            <div className="rounded-[28px] bg-[#f6f6f5] border border-[#e4e4e2] p-4 sm:p-5 lg:p-6">
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="rounded-2xl bg-[#f6f6f5] p-3.5 sm:p-4">
-                  <div className="mb-4">
-                    <p className="text-[15px] font-semibold text-ink leading-none mb-1">Before</p>
+            <div className="rounded-[22px] sm:rounded-[28px] bg-[#f6f6f5] border border-[#e4e4e2] p-3 sm:p-5 lg:p-6 overflow-hidden">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4">
+                <div className="rounded-2xl bg-[#f6f6f5] p-1 sm:p-2 lg:p-3">
+                  <div className="mb-3 sm:mb-4">
+                    <p className="text-sm sm:text-[15px] font-semibold text-ink leading-none mb-1">Before</p>
                     <p className="text-[12px] text-[#9ca3af]">No shadows</p>
                   </div>
                   <RevenueCard shadow="none" />
                 </div>
 
-                <div className="rounded-2xl bg-[#f6f6f5] p-3.5 sm:p-4">
-                  <div className="mb-4">
-                    <p className="text-[15px] font-semibold text-ink leading-none mb-1">After</p>
+                <div className="rounded-2xl bg-[#f6f6f5] p-1 sm:p-2 lg:p-3">
+                  <div className="mb-3 sm:mb-4">
+                    <p className="text-sm sm:text-[15px] font-semibold text-ink leading-none mb-1">After</p>
                     <p className="text-[12px] text-[#9ca3af]">With ShadowCraft</p>
                   </div>
                   <RevenueCard shadow={active.shadow} />
@@ -161,36 +162,26 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-3 sm:grid-cols-6 gap-2.5 sm:gap-3">
-              {presets.map((preset) => {
-                const isActive = preset.id === activePreset;
-                return (
-                  <button
-                    key={preset.id}
-                    type="button"
-                    onClick={() => setActivePreset(preset.id)}
-                    className={`rounded-2xl bg-white p-2.5 sm:p-3 text-left transition-all duration-200 ${
-                      isActive
-                        ? 'border-2 border-[#b0b0b0]'
-                        : 'border-2 border-[#e8e8e6] hover:border-[#d4d4d4]'
-                    }`}
-                  >
-                    <div
-                      className="h-10 sm:h-11 rounded-xl bg-white mb-2.5"
-                      style={{
-                        boxShadow: preset.shadow,
-                        background:
-                          preset.id === 'glass'
-                            ? 'linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,245,245,0.85))'
-                            : '#ffffff',
-                      }}
-                    />
-                    <span className="block text-[11px] sm:text-xs font-medium text-[#4b5563] truncate">
+            <div className="mt-3 sm:mt-4 overflow-x-auto scrollbar-minimal">
+              <div className="inline-flex min-w-full sm:min-w-0 sm:flex sm:flex-wrap gap-1.5 p-1 rounded-xl bg-[#f3f3f1] border border-line">
+                {presets.map((preset) => {
+                  const isActive = preset.id === activePreset;
+                  return (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => setActivePreset(preset.id)}
+                      className={`shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 ${
+                        isActive
+                          ? 'bg-ink text-white'
+                          : 'bg-transparent text-muted hover:text-ink hover:bg-white/70'
+                      }`}
+                    >
                       {preset.label}
-                    </span>
-                  </button>
-                );
-              })}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         </div>
