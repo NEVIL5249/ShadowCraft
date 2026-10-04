@@ -86,6 +86,14 @@ const Library = () => {
                     ? 'bg-ink text-white border-ink'
                     : 'bg-white text-muted border-[#e8e8e6] hover:border-[#d4d4d4] hover:text-ink'
                 }`}
+                style={
+                  activeCategory === cat
+                    ? {
+                        boxShadow:
+                          'inset 0 2px 4px rgba(255,255,255,0.22), inset 0 -1px 2px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.2)',
+                      }
+                    : undefined
+                }
               >
                 {cat === 'ALL' ? 'All' : cat.charAt(0) + cat.slice(1).toLowerCase()}
               </button>
