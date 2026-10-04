@@ -29,7 +29,7 @@ const CodeBlock = ({ code, language, title }) => {
           {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>
       </div>
-      <div className="p-4 overflow-x-auto">
+      <div className="p-4 overflow-auto max-h-72 scrollbar-minimal-dark">
         <pre className="text-sm font-mono text-neutral-300">
           <code>{code}</code>
         </pre>
