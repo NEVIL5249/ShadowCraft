@@ -7,7 +7,7 @@ export const SITE = {
   npm: 'https://www.npmjs.com/package/@nevil5249/shadowcraft',
   email: 'contact@nevilgadhia.in',
   locale: 'en_US',
-  version: '1.1.0',
+  version: '1.2.0',
 };
 
 export const GLOBAL_KEYWORDS = [
