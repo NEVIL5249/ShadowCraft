@@ -7,11 +7,12 @@ const Footer = ({ onOpenContact }) => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-14">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-ink text-white flex items-center justify-center">
-                <span className="material-symbols-outlined text-[16px]">architecture</span>
-              </div>
-              <span className="font-semibold text-base tracking-tight text-ink">ShadowCraft</span>
+            <div className="mb-5">
+              <img
+                src="/brand/shadowcraft-logo-full.png"
+                alt="ShadowCraft"
+                className="h-8 w-auto"
+              />
             </div>
             <p className="text-muted text-[15px] leading-relaxed max-w-sm mb-7">
               A premium Tailwind CSS library for multi-layer interface shadows—built for product teams who care about depth.

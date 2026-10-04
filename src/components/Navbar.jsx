@@ -16,11 +16,12 @@ const Navbar = ({ onOpenContact }) => {
     <>
       <header className="sticky top-0 z-50 w-full border-b border-line bg-white/85 backdrop-blur-md shadow-ui-nav px-6 lg:px-8">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-ink text-white">
-              <span className="material-symbols-outlined text-[18px]">architecture</span>
-            </div>
-            <span className="text-base font-semibold tracking-tight">ShadowCraft</span>
+          <Link to="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+            <img
+              src="/brand/shadowcraft-logo-full.png"
+              alt="ShadowCraft"
+              className="h-7 sm:h-8 w-auto"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -126,14 +127,13 @@ const Navbar = ({ onOpenContact }) => {
             </a>
           </div>
 
-          <div className="mt-auto flex items-center gap-3 border-t border-line pt-8">
-            <div className="w-8 h-8 rounded-lg bg-ink text-white flex items-center justify-center">
-              <span className="material-symbols-outlined text-[16px]">architecture</span>
-            </div>
-            <div>
-              <p className="font-semibold text-sm tracking-tight text-ink">ShadowCraft</p>
-              <p className="text-xs text-muted">Premium shadow library</p>
-            </div>
+          <div className="mt-auto border-t border-line pt-8">
+            <img
+              src="/brand/shadowcraft-logo-full.png"
+              alt="ShadowCraft"
+              className="h-7 w-auto mb-2"
+            />
+            <p className="text-xs text-muted">Premium shadow library</p>
           </div>
         </div>
       </div>
