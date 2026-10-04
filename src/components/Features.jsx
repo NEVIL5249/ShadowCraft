@@ -1,63 +1,91 @@
 import React from 'react';
+import { Layers, Zap, Code2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+const iconShadow = `
+  inset 0px 2px 4px 0px rgba(255, 255, 255, 0.4),
+  0px 0.7409732186279143px 0.7409732186279143px -0.75px rgba(0, 0, 0, 0.33),
+  0px 2.0178668455264415px 2.0178668455264415px -1.5px rgba(0, 0, 0, 0.32),
+  0px 4.430505261661892px 4.430505261661892px -2.25px rgba(0, 0, 0, 0.3),
+  0px 9.834710084098335px 9.834710084098335px -3px rgba(0, 0, 0, 0.25),
+  0px 25px 25px -3.75px rgba(0, 0, 0, 0.11),
+  0px 0px 0px 1px rgb(130, 130, 130)
+`;
+
+const features = [
+  {
+    icon: Layers,
+    title: 'Multi-layer depth',
+    description:
+      'Every shadow is a carefully stacked composite—soft contact, mid penumbra, and ambient falloff—so surfaces feel physical.',
+  },
+  {
+    icon: Zap,
+    title: 'Built for production',
+    description:
+      'Lightweight utilities tuned for modern rendering. Drop them into Tailwind and ship without fighting default shadows.',
+  },
+  {
+    icon: Code2,
+    title: 'Copy what you need',
+    description:
+      'Use class names, raw CSS, or Tailwind arbitrary values. Integrate in React, Next.js, or plain HTML in minutes.',
+  },
+];
 
 const Features = () => {
   return (
-    <section className="py-24 border-y border-slate-200 bg-white">
+    <section className="py-24 lg:py-28 bg-white border-y border-line">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div 
+        <div className="max-w-2xl mb-14 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink mb-4">
+            Depth that feels intentional
+          </h2>
+          <p className="text-base sm:text-lg text-muted leading-relaxed">
+            Stop guessing box-shadow values. ShadowCraft gives you a curated system for elevation, insets, and floating UI.
+          </p>
+        </div>
+
+        <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-80px' }}
           variants={{
             hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.2
-              }
-            }
+            visible: { transition: { staggerChildren: 0.12 } },
           }}
-          className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100 border border-slate-100 shadow-ui-card"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
         >
-          <motion.div 
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            }}
-            className="p-8 group bg-white transition-all hover:shadow-ui-nav"
-          >
-            <div className="text-[10px] font-bold text-blueprint-accent mb-4 tracking-tighter">01 // LAYERED</div>
-            <h4 className="text-xl font-medium mb-4 uppercase tracking-tight">Technical Depth</h4>
-            <p className="font-serif text-slate-500 text-sm leading-relaxed italic">
-              Move beyond single-line CSS properties. Every shadow is a composite of multiple layers calculated for physical accuracy.
-            </p>
-          </motion.div>
-          <motion.div 
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            }}
-            className="p-8 group bg-white transition-all hover:shadow-ui-nav"
-          >
-            <div className="text-[10px] font-bold text-blueprint-accent mb-4 tracking-tighter">02 // PERFORMANCE</div>
-            <h4 className="text-xl font-medium mb-4 uppercase tracking-tight">Runtime Analysis</h4>
-            <p className="font-serif text-slate-500 text-sm leading-relaxed italic">
-              Benchmarked on modern rendering engines to ensure 60fps interaction even with complex, multi-layered occlusion.
-            </p>
-          </motion.div>
-          <motion.div 
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            }}
-            className="p-8 group bg-white transition-all hover:shadow-ui-nav"
-          >
-            <div className="text-[10px] font-bold text-blueprint-accent mb-4 tracking-tighter">03 // EXPORT</div>
-            <h4 className="text-xl font-medium mb-4 uppercase tracking-tight">Atomic Design</h4>
-            <p className="font-serif text-slate-500 text-sm leading-relaxed italic">
-              Export directly as Tailwind configuration objects or raw CSS custom properties for seamless architectural integration.
-            </p>
-          </motion.div>
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={feature.title}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="group"
+              >
+                <div
+                  className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-white"
+                  style={{ boxShadow: iconShadow }}
+                >
+                  <Icon size={20} strokeWidth={1.75} />
+                </div>
+                <h3 className="text-lg font-semibold text-ink mb-2 tracking-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-[15px] text-muted leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

@@ -55,18 +55,16 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
       {corner !== 'none' && (
         <div className={`absolute w-8 h-8 border-slate-900 z-20 ${getCornerClass()}`}></div>
       )}
-      <div className={`relative h-full ${padding} ${variant === 'glass' ? 'bg-slate-100/30' : 'bg-white'} border border-slate-200 transition-all group-hover:border-slate-300`}>
-        {variant === 'blueprint' && <div className="absolute inset-0 blueprint-bg opacity-10 pointer-events-none"></div>}
+      <div className={`relative h-full rounded-2xl ${padding} ${variant === 'glass' ? 'bg-white/70' : 'bg-white'} border border-line transition-all duration-300 group-hover:border-neutral-300 group-hover:shadow-ui-soft`}>
+        {variant === 'blueprint' && <div className="absolute inset-0 blueprint-bg opacity-10 pointer-events-none rounded-2xl"></div>}
         
         <div className="relative z-10">
-        <div className="flex justify-between items-start mb-12">
+        <div className="flex justify-between items-start mb-10">
           <div className="space-y-1">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">{shadow.id}. {shadow.name}</h3>
-            <div className={`flex gap-4 text-[10px] font-mono ${variant === 'glass' ? 'text-blueprint-accent' : 'text-slate-400'}`}>
-              <span>L: {shadow.layers || '00'}</span>
-              <span>T: {shadow.time || '0.00MS'}</span>
-              <span>C: {shadow.category || 'GENERAL'}</span>
-              {/* {shadow.optimized && <span className="font-bold text-blueprint-accent">OPTIMIZED</span>} */}
+            <h3 className="text-sm font-semibold tracking-tight text-ink">{shadow.name}</h3>
+            <div className="flex gap-4 text-[11px] font-mono text-muted">
+              <span>{shadow.layers || '00'} layers</span>
+              <span>{shadow.category || 'General'}</span>
             </div>
           </div>
           <div className="flex gap-2 relative" ref={menuRef}>
@@ -162,22 +160,19 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
           </div>
         </div>
         
-        <div className="py-12 md:py-20 flex items-center justify-center bg-slate-50 border border-slate-100/50">
+        <div className="py-12 md:py-16 flex items-center justify-center bg-surface rounded-xl border border-line/70">
           <div 
-            className={`w-36 h-36 md:w-48 md:h-48 transition-all ${variant === 'glass' ? 'bg-white/60 backdrop-blur-md border border-white/40' : 'bg-white border border-slate-50/50'}`}
+            className={`w-36 h-36 md:w-44 md:h-44 rounded-xl transition-all ${variant === 'glass' ? 'bg-white/70 backdrop-blur-md border border-white/50' : 'bg-white border border-black/[0.03]'}`}
             style={{ 
               boxShadow: (shadow.css || '').replace('box-shadow: ', '').replace(';', '') 
             }}
           ></div>
         </div>
 
-        <div className="mt-8 md:mt-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
-          <div className="font-mono text-[9px] text-slate-400 space-y-1 uppercase">
-            <div className="flex gap-2"><span>CLASS:</span> <span className="text-slate-900">.{shadow.className}</span></div>
-            <div className="flex gap-2"><span>USAGE:</span> <span className="text-slate-900">{shadow.usage}</span></div>
-          </div>
-          <div className="text-[10px] font-bold uppercase tracking-widest text-slate-300">
-            REF: {shadow.ref}
+        <div className="mt-7 md:mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
+          <div className="font-mono text-[11px] text-muted space-y-1">
+            <div className="flex gap-2"><span className="text-muted/80">class</span> <span className="text-ink">.{shadow.className}</span></div>
+            <div className="flex gap-2"><span className="text-muted/80">use</span> <span className="text-ink">{shadow.usage}</span></div>
           </div>
         </div>
         </div>
