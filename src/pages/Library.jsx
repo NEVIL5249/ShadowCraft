@@ -5,7 +5,7 @@ import { Search, Filter, X, Plus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CATEGORIES = [
-  'ALL', 'ELEVATION', 'INSET', 'GLASS', 'FLOATING', 'AMBIENT',
+  'ALL', 'BUTTON', 'ELEVATION', 'INSET', 'GLASS', 'FLOATING', 'AMBIENT',
   'STRUCTURAL', 'CRISP', 'DIFFUSED', 'BLUEPRINT', 'VOLUMETRIC',
   'GEOMETRIC', 'MICRO', 'COLORFUL', 'NEUMORPHISM', 'MATERIAL',
   'DIRECTIONAL', 'GLOW', 'DARK MODE', 'SKEUOMORPHIC', 'CINEMATIC'

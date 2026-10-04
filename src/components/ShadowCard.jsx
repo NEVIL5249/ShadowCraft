@@ -161,12 +161,30 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
         </div>
         
         <div className="py-12 md:py-16 flex items-center justify-center bg-surface rounded-xl border border-line/70">
-          <div 
-            className={`w-36 h-36 md:w-44 md:h-44 rounded-xl transition-all ${variant === 'glass' ? 'bg-white/70 backdrop-blur-md border border-white/50' : 'bg-white border border-black/[0.03]'}`}
-            style={{ 
-              boxShadow: (shadow.css || '').replace('box-shadow: ', '').replace(';', '') 
-            }}
-          ></div>
+          {shadow.preview === 'button' || shadow.category === 'Button' ? (
+            <button
+              type="button"
+              className={`px-6 py-3 rounded-xl text-sm font-medium tracking-wide transition-transform duration-200 hover:-translate-y-0.5 ${
+                shadow.buttonVariant === 'light'
+                  ? 'bg-white text-ink'
+                  : shadow.buttonVariant === 'soft'
+                    ? 'bg-[#f3f3f1] text-ink'
+                    : 'bg-ink text-white'
+              }`}
+              style={{
+                boxShadow: (shadow.css || '').replace('box-shadow: ', '').replace(';', ''),
+              }}
+            >
+              {shadow.buttonLabel || 'Button'}
+            </button>
+          ) : (
+            <div
+              className={`w-36 h-36 md:w-44 md:h-44 rounded-xl transition-all ${variant === 'glass' ? 'bg-white/70 backdrop-blur-md border border-white/50' : 'bg-white border border-black/[0.03]'}`}
+              style={{
+                boxShadow: (shadow.css || '').replace('box-shadow: ', '').replace(';', ''),
+              }}
+            />
+          )}
         </div>
 
         <div className="mt-7 md:mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
