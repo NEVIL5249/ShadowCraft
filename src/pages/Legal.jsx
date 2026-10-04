@@ -2,46 +2,51 @@ import React from 'react';
 
 const Legal = () => {
   return (
-    <div className="pt-12 pb-32 min-h-screen bg-white">
+    <div className="pt-14 pb-28 min-h-screen bg-surface">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <div className="flex items-center gap-2 mb-12">
-          <span className="h-[1px] w-8 bg-blueprint-accent"></span>
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blueprint-accent">Protocol Docs</span>
-        </div>
-        
-        <h1 className="text-4xl font-light tracking-tight text-slate-900 uppercase italic font-serif mb-16">
-          Legal <span className="text-slate-400 not-italic font-sans font-bold">Frameworks</span>
+        <p className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-[#9ca3af] mb-4">
+          Legal
+        </p>
+
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink mb-12">
+          Terms & policies
         </h1>
 
-        <div className="space-y-20">
+        <div className="space-y-14">
           <section id="terms">
-            <h2 className="text-[10px] font-bold uppercase tracking-[0.5em] text-slate-900 border-b border-slate-100 pb-4 mb-8">01 // Terms of Service</h2>
-            <div className="font-serif text-slate-600 leading-relaxed italic space-y-4">
-              <p>By accessing ShadowCraft, you agree to technical adherence with our interface standards. All shadows generated are structurally optimized for visual integrity.</p>
-              <p>The software is provided "as is", designed for high-precision interface development within the volumetric framework specified in our documentation.</p>
+            <h2 className="text-sm font-semibold tracking-tight text-ink border-b border-line pb-3 mb-5">
+              Terms of Service
+            </h2>
+            <div className="text-[15px] text-muted leading-relaxed space-y-4">
+              <p>By accessing ShadowCraft, you agree to use the library in accordance with these terms. Shadows and utilities are provided for building modern interfaces.</p>
+              <p>The software is provided “as is”, intended for high-quality interface development as described in our documentation.</p>
             </div>
           </section>
 
           <section id="privacy">
-            <h2 className="text-[10px] font-bold uppercase tracking-[0.5em] text-slate-900 border-b border-slate-100 pb-4 mb-8">02 // Privacy Policy</h2>
-            <div className="font-serif text-slate-600 leading-relaxed italic space-y-4">
-              <p>We do not collect personal data. Your architectural definitions and shadow configurations are handled locally within your browser's execution context.</p>
-              <p>Anonymous telemetry may be recorded to optimize the volumetric algorithm and improve system performance v4.0.1.</p>
+            <h2 className="text-sm font-semibold tracking-tight text-ink border-b border-line pb-3 mb-5">
+              Privacy Policy
+            </h2>
+            <div className="text-[15px] text-muted leading-relaxed space-y-4">
+              <p>We do not collect personal data. Shadow configurations and playground settings remain local in your browser.</p>
+              <p>Anonymous usage signals may be used only to improve product quality and documentation.</p>
             </div>
           </section>
 
           <section id="security">
-            <h2 className="text-[10px] font-bold uppercase tracking-[0.5em] text-slate-900 border-b border-slate-100 pb-4 mb-8">03 // Security</h2>
-            <div className="font-serif text-slate-600 leading-relaxed italic space-y-4">
-              <p>Our framework maintains strict structural integrity. We ensure that exported CSS and Tailwind classes are sanitized and optimized for production environments.</p>
-              <p>Access protocols are encrypted via standard interface security layers, ensuring your design systems remain protected.</p>
+            <h2 className="text-sm font-semibold tracking-tight text-ink border-b border-line pb-3 mb-5">
+              Security
+            </h2>
+            <div className="text-[15px] text-muted leading-relaxed space-y-4">
+              <p>Exported CSS and Tailwind classes are intended for production use and should be reviewed as part of your normal release process.</p>
+              <p>Report security concerns through the contact options available on this site.</p>
             </div>
           </section>
         </div>
 
-        <div className="mt-24 pt-8 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-slate-400 uppercase tracking-widest">
-          <span>Status: Public_Domain</span>
-          <span>Last_Update: 2026.02.21</span>
+        <div className="mt-20 pt-6 border-t border-line flex items-center justify-between text-xs text-muted">
+          <span>ShadowCraft</span>
+          <span>Updated 2026</span>
         </div>
       </div>
     </div>

@@ -13,34 +13,31 @@ const CONTENT = {
     {
       step: '01',
       title: 'Install the package',
-      description: 'Run the following command in your terminal to install the underlying structural definitions.',
+      description: 'Add ShadowCraft to your project with a single npm command.',
       code: 'npm install @nevil5249/shadowcraft',
-      lang: 'bash',
       titleLabel: 'Terminal'
     },
     {
       step: '02',
       title: 'Configure Tailwind plugin',
-      description: 'Add the plugin to your tailwind.config.js (or .ts) to expose the volumetric shadows to your utility classes.',
+      description: 'Wire the plugin into Tailwind so shadow utilities are available in your classes.',
       codeBlocks: [
         {
           label: 'Tailwind v4 (Recommended)',
           titleLabel: 'index.css (Tailwind v4)',
           code: '@import "tailwindcss";\n@plugin "@nevil5249/shadowcraft";',
-          lang: 'css'
         },
         {
           label: 'Tailwind v3 (Legacy support)',
           titleLabel: 'tailwind.config.js (Tailwind v3)',
           code: 'module.exports = {\n  plugins: [\n    require(\'@nevil5249/shadowcraft\')\n  ],\n}',
-          lang: 'javascript'
         }
       ]
     },
     {
       step: '03',
       title: 'Apply volumetric shadows',
-      description: 'Start using any of the curated shadows in your components immediately.',
+      description: 'Start using any curated shadow class in your components immediately.',
       code: `function Card() {
   return (
     <div className="shd-subtle-01 bg-white p-6 rounded-lg">
@@ -51,42 +48,38 @@ const CONTENT = {
     </div>
   );
 }`,
-      lang: 'jsx',
       titleLabel: 'Component.jsx'
     }
   ],
   nextjs: [
     {
       step: '01',
-      title: 'Install the framework',
-      description: 'Add the ShadowCraft architecture to your Next.js application.',
+      title: 'Install the package',
+      description: 'Add ShadowCraft to your Next.js application.',
       code: 'npm install @nevil5249/shadowcraft',
-      lang: 'bash',
       titleLabel: 'Terminal'
     },
     {
       step: '02',
       title: 'Configure Tailwind',
-      description: 'Modify your Next.js tailwind.config.ts file to include the plugin.',
+      description: 'Add the plugin to your Tailwind setup for Next.js.',
       codeBlocks: [
         {
           label: 'Tailwind v4 (Recommended)',
           titleLabel: 'index.css (Tailwind v4)',
           code: '@import "tailwindcss";\n@plugin "@nevil5249/shadowcraft";',
-          lang: 'css'
         },
         {
           label: 'Tailwind v3 (Legacy support)',
           titleLabel: 'tailwind.config.js (Tailwind v3)',
           code: 'module.exports = {\n  plugins: [\n    require(\'@nevil5249/shadowcraft\')\n  ],\n}',
-          lang: 'javascript'
         }
       ]
     },
     {
       step: '03',
-      title: 'Utilize classes globally',
-      description: 'The classes are globally available. Use them within your server or client components.',
+      title: 'Use classes globally',
+      description: 'Shadow utilities are available in both server and client components.',
       code: `export default function Page() {
   return (
     <main className="min-h-screen p-24">
@@ -99,7 +92,6 @@ const CONTENT = {
     </main>
   );
 }`,
-      lang: 'tsx',
       titleLabel: 'app/page.tsx'
     }
   ],
@@ -109,32 +101,29 @@ const CONTENT = {
       title: 'Install dependency',
       description: 'Fetch the package via npm for your static project.',
       code: 'npm install @nevil5249/shadowcraft',
-      lang: 'bash',
       titleLabel: 'Terminal'
     },
     {
       step: '02',
-      title: 'Update Tailwind CLI config',
-      description: 'Add the plugin required to generate the multi-layered CSS rules.',
+      title: 'Update Tailwind config',
+      description: 'Add the plugin so multi-layer shadow utilities are generated.',
       codeBlocks: [
         {
           label: 'Tailwind v4 (Recommended)',
           titleLabel: 'index.css (Tailwind v4)',
           code: '@import "tailwindcss";\n@plugin "@nevil5249/shadowcraft";',
-          lang: 'css'
         },
         {
           label: 'Tailwind v3 (Legacy support)',
           titleLabel: 'tailwind.config.js (Tailwind v3)',
           code: 'module.exports = {\n  plugins: [\n    require(\'@nevil5249/shadowcraft\')\n  ],\n}',
-          lang: 'javascript'
         }
       ]
     },
     {
       step: '03',
-      title: 'Use in raw HTML',
-      description: 'Build robust static interfaces utilizing the shadow utility pipeline.',
+      title: 'Use in HTML',
+      description: 'Apply ShadowCraft classes directly in your markup.',
       code: `<!DOCTYPE html>
 <html>
 <head>
@@ -150,7 +139,6 @@ const CONTENT = {
   </div>
 </body>
 </html>`,
-      lang: 'html',
       titleLabel: 'index.html'
     }
   ]
@@ -160,51 +148,48 @@ const Docs = () => {
   const [activeTab, setActiveTab] = useState('react');
 
   return (
-    <div className="pt-12 pb-32 min-h-screen bg-white">
+    <div className="pt-14 pb-28 min-h-screen bg-surface">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        
-        {/* Header Section */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="h-[1px] w-8 bg-blueprint-accent"></span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blueprint-accent">Implementation Docs</span>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-light tracking-tight text-slate-900 uppercase italic font-serif mb-6">
-            System <span className="text-slate-400 not-italic font-sans font-bold">Integration</span>
+        <div className="mb-12">
+          <p className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-[#9ca3af] mb-4">
+            Documentation
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink mb-4">
+            Get started with ShadowCraft
           </h1>
-          <p className="text-slate-500 font-serif italic text-lg max-w-2xl">
-            A comprehensive guide to wiring the ShadowCraft architecture into your frontend ecosystem. Engineered for a zero-friction developer experience via Tailwind CSS.
+          <p className="text-[16px] text-muted leading-relaxed max-w-2xl">
+            Install the package, add the Tailwind plugin, and start using production-ready volumetric shadows in minutes.
           </p>
         </div>
 
-        {/* Requirements */}
-        <div className="flex flex-wrap gap-8 mb-16 p-6 md:p-8 bg-slate-50 border border-slate-100">
-          <h3 className="w-full text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 border-b border-slate-200 pb-4 mb-2">Prerequisites Ensure System Readiness</h3>
-          <div className="flex items-center gap-4 text-sm font-mono text-slate-700">
-            <Terminal size={16} className="text-blueprint-accent" />
+        <div className="flex flex-wrap gap-6 mb-12 p-6 md:p-7 bg-white border border-line rounded-2xl">
+          <h3 className="w-full text-xs font-semibold uppercase tracking-[0.14em] text-[#9ca3af] border-b border-line pb-4 mb-1">
+            Prerequisites
+          </h3>
+          <div className="flex items-center gap-3 text-sm text-ink-soft">
+            <Terminal size={16} className="text-muted" />
             <span>Node.js v16+</span>
           </div>
-          <div className="flex items-center gap-4 text-sm font-mono text-slate-700">
-            <Layers size={16} className="text-blueprint-accent" />
-            <span>Tailwind CSS v3.0+ or v4.0+</span>
+          <div className="flex items-center gap-3 text-sm text-ink-soft">
+            <Layers size={16} className="text-muted" />
+            <span>Tailwind CSS v3 or v4</span>
           </div>
-          <div className="flex items-center gap-4 text-sm font-mono text-slate-700">
-            <Box size={16} className="text-blueprint-accent" />
-            <span>Package Manager (npm/yarn/pnpm)</span>
+          <div className="flex items-center gap-3 text-sm text-ink-soft">
+            <Box size={16} className="text-muted" />
+            <span>npm / yarn / pnpm</span>
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="mb-12 border-b border-slate-200">
-          <div className="flex overflow-x-auto hide-scrollbar">
+        <div className="mb-10 border-b border-line">
+          <div className="flex overflow-x-auto">
             {FRAMEWORKS.map((fw) => (
               <button
                 key={fw.id}
                 onClick={() => setActiveTab(fw.id)}
-                className={`px-8 py-4 text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-all ${
+                className={`px-5 py-3.5 text-sm font-medium whitespace-nowrap transition-all ${
                   activeTab === fw.id
-                    ? 'border-b-2 border-slate-900 text-slate-900'
-                    : 'text-slate-400 hover:text-slate-600'
+                    ? 'border-b-2 border-ink text-ink'
+                    : 'text-muted hover:text-ink'
                 }`}
               >
                 {fw.name}
@@ -213,62 +198,53 @@ const Docs = () => {
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="space-y-16 animate-in fade-in duration-500">
+        <div className="space-y-14">
           {CONTENT[activeTab].map((item, index) => (
-            <div key={index} className="flex flex-col md:flex-row gap-8 lg:gap-16">
-              
-              {/* Step indicator & Text */}
+            <div key={index} className="flex flex-col md:flex-row gap-8 lg:gap-12">
               <div className="md:w-1/3 flex-shrink-0">
                 <div className="flex items-start gap-4">
-                  <div className="text-slate-300 font-mono text-xl font-light flex gap-2">
-                    [ <span className="text-slate-900 font-bold">{item.step}</span> ]
-                  </div>
-                  <div className="pt-1">
-                    <h3 className="text-[14px] font-bold text-slate-900 mb-3">{item.title}</h3>
-                    <p className="text-slate-600 font-serif italic text-[15px] leading-relaxed">
+                  <span className="font-mono text-sm text-[#9ca3af] pt-0.5">{item.step}</span>
+                  <div>
+                    <h3 className="text-base font-semibold text-ink tracking-tight mb-2">{item.title}</h3>
+                    <p className="text-[15px] text-muted leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Code */}
-              <div className="md:w-2/3 mt-4 md:mt-0">
+              <div className="md:w-2/3">
                 {item.codeBlocks ? (
-                  <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-5">
                     {item.codeBlocks.map((block, i) => (
                       <div key={i}>
                         {block.label && (
-                          <div className="text-sm font-semibold text-slate-600 mb-2">
+                          <div className="text-sm font-medium text-ink-soft mb-2">
                             {block.label}
                           </div>
                         )}
-                        <CodeBlock 
-                          code={block.code} 
-                          title={block.titleLabel} 
+                        <CodeBlock
+                          code={block.code}
+                          title={block.titleLabel}
                         />
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <CodeBlock 
-                    code={item.code} 
-                    title={item.titleLabel} 
+                  <CodeBlock
+                    code={item.code}
+                    title={item.titleLabel}
                   />
                 )}
               </div>
-
             </div>
           ))}
         </div>
 
-        {/* Footer info */}
-        <div className="mt-32 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-slate-400 uppercase tracking-widest gap-4">
-          <span>Module: @nevil5249/shadowcraft</span>
-          <span>Status: Public_Registry_Active</span>
+        <div className="mt-24 pt-6 border-t border-line flex flex-col md:flex-row justify-between items-center text-xs text-muted gap-3">
+          <span>@nevil5249/shadowcraft</span>
+          <span>Available on npm</span>
         </div>
-
       </div>
     </div>
   );

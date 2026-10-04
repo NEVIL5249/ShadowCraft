@@ -11,26 +11,26 @@ const CodeBlock = ({ code, language, title }) => {
   };
 
   return (
-    <div className="rounded-none border border-slate-200 overflow-hidden bg-slate-900 shadow-ui-terminal my-6">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-800 bg-slate-900/50">
+    <div className="rounded-2xl border border-line overflow-hidden bg-ink my-2">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
         <div className="flex items-center gap-3">
           <div className="flex gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-slate-700"></div>
-            <div className="w-2 h-2 rounded-full bg-slate-700"></div>
-            <div className="w-2 h-2 rounded-full bg-slate-700"></div>
+            <div className="w-2 h-2 rounded-full bg-white/20" />
+            <div className="w-2 h-2 rounded-full bg-white/20" />
+            <div className="w-2 h-2 rounded-full bg-white/20" />
           </div>
-          {title && <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{title}</span>}
+          {title && <span className="text-[11px] font-mono text-[#9ca3af] tracking-wide">{title}</span>}
         </div>
-        <button 
+        <button
           onClick={handleCopy}
-          className="text-slate-500 hover:text-white transition-colors"
+          className="text-[#9ca3af] hover:text-white transition-colors"
           aria-label="Copy code"
         >
-          {copied ? <Check size={14} className="text-blueprint-accent" /> : <Copy size={14} />}
+          {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>
       </div>
       <div className="p-4 overflow-x-auto">
-        <pre className="text-sm font-mono text-slate-300">
+        <pre className="text-sm font-mono text-neutral-300">
           <code>{code}</code>
         </pre>
       </div>

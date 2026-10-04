@@ -72,7 +72,7 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
             <div className="hidden lg:flex gap-2">
               <button 
                 onClick={() => copyToClipboard(getTailwindValue(shadow.css), 'tailwind')}
-                className="p-2 border border-slate-100 opacity-0 group-hover:opacity-100 transition-all hover:border-blueprint-accent hover:text-blueprint-accent relative"
+                className="p-2 border border-line rounded-lg opacity-0 group-hover:opacity-100 transition-all hover:border-ink hover:text-ink relative"
                 title="Copy Tailwind Arbitrary Value"
               >
                 <TailwindIcon size={16} />
@@ -80,7 +80,7 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
               </button>
               <button 
                 onClick={() => copyToClipboard(shadow.css, 'css')}
-                className="p-2 border border-slate-100 opacity-0 group-hover:opacity-100 transition-all hover:border-blueprint-accent hover:text-blueprint-accent relative"
+                className="p-2 border border-line rounded-lg opacity-0 group-hover:opacity-100 transition-all hover:border-ink hover:text-ink relative"
                 title="Copy raw CSS"
               >
                 <CssIcon size={16} />
@@ -88,7 +88,7 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
               </button>
               <button 
                 onClick={() => copyToClipboard(shadow.className, 'class')}
-                className="p-2 border border-slate-100 opacity-0 group-hover:opacity-100 transition-all hover:border-blueprint-accent hover:text-blueprint-accent relative"
+                className="p-2 border border-line rounded-lg opacity-0 group-hover:opacity-100 transition-all hover:border-ink hover:text-ink relative"
                 title="Copy Class Name"
               >
                 {copiedType === 'class' ? <Check size={16} /> : <Copy size={16} />}
@@ -100,7 +100,7 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
             <div className="flex lg:hidden relative">
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`flex items-center gap-2 p-2 px-3 border transition-all duration-200 ${isMenuOpen ? 'border-slate-900 bg-slate-900 text-white shadow-lg' : 'border-slate-200 bg-white text-slate-900'}`}
+                className={`flex items-center gap-2 p-2 px-3 rounded-lg border transition-all duration-200 ${isMenuOpen ? 'border-ink bg-ink text-white' : 'border-line bg-white text-ink'}`}
               >
                 <Copy size={14} className={isMenuOpen ? 'text-white' : 'text-slate-500'} />
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Copy</span>
@@ -113,13 +113,13 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
                     initial={{ opacity: 0, scale: 0.95, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                    className="absolute right-0 top-full mt-2 w-56 bg-white border border-slate-200 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] z-[100] py-1 origin-top-right overflow-hidden"
+                    className="absolute right-0 top-full mt-2 w-56 bg-white border border-line rounded-xl shadow-ui-soft z-[100] py-1 origin-top-right overflow-hidden"
                   >
                     <button 
                       onClick={() => { copyToClipboard(getTailwindValue(shadow.css), 'tailwind'); setTimeout(() => setIsMenuOpen(false), 600); }}
                       className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors text-left border-b border-slate-50 last:border-0 group/item"
                     >
-                      <div className={`p-2 border border-slate-100 group-hover/item:border-blueprint-accent transition-colors ${copiedType === 'tailwind' ? 'text-green-500 border-green-100 bg-green-50' : 'text-slate-400'}`}>
+                      <div className={`p-2 border border-line rounded-lg group-hover/item:border-ink transition-colors ${copiedType === 'tailwind' ? 'text-green-500 border-green-100 bg-green-50' : 'text-muted'}`}>
                         {copiedType === 'tailwind' ? <Check size={14} /> : <TailwindIcon size={14} />}
                       </div>
                       <div className="flex flex-col">
@@ -132,7 +132,7 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
                       onClick={() => { copyToClipboard(shadow.css, 'css'); setTimeout(() => setIsMenuOpen(false), 600); }}
                       className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors text-left border-b border-slate-50 last:border-0 group/item"
                     >
-                      <div className={`p-2 border border-slate-100 group-hover/item:border-blueprint-accent transition-colors ${copiedType === 'css' ? 'text-green-500 border-green-100 bg-green-50' : 'text-slate-400'}`}>
+                      <div className={`p-2 border border-line rounded-lg group-hover/item:border-ink transition-colors ${copiedType === 'css' ? 'text-green-500 border-green-100 bg-green-50' : 'text-muted'}`}>
                         {copiedType === 'css' ? <Check size={14} /> : <CssIcon size={14} />}
                       </div>
                       <div className="flex flex-col">
@@ -145,7 +145,7 @@ const ShadowCard = ({ shadow, variant = 'default', corner = 'top-left', padding 
                       onClick={() => { copyToClipboard(shadow.className, 'class'); setTimeout(() => setIsMenuOpen(false), 600); }}
                       className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors text-left border-b border-slate-50 last:border-0 group/item"
                     >
-                      <div className={`p-2 border border-slate-100 group-hover/item:border-blueprint-accent transition-colors ${copiedType === 'class' ? 'text-green-500 border-green-100 bg-green-50' : 'text-slate-400'}`}>
+                      <div className={`p-2 border border-line rounded-lg group-hover/item:border-ink transition-colors ${copiedType === 'class' ? 'text-green-500 border-green-100 bg-green-50' : 'text-muted'}`}>
                         {copiedType === 'class' ? <Check size={14} /> : <Copy size={14} />}
                       </div>
                       <div className="flex flex-col">

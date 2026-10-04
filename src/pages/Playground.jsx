@@ -70,75 +70,71 @@ const Playground = () => {
   };
 
   return (
-    <div className="pt-12 pb-24 blueprint-bg min-height-screen">
+    <div className="pt-14 pb-24 min-h-screen bg-surface">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        
-        <div className="mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="h-[1px] w-8 bg-blueprint-accent"></span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blueprint-accent">Construction View</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-light uppercase tracking-tight text-slate-900 mb-6">Shadow Playground</h2>
-          <p className="font-serif text-lg text-slate-500 italic border-l-2 border-slate-200 pl-6 py-2 max-w-2xl">
-            Real-time architectural shadow generator with multi-layer volumetric compositing. Adjust parameters to engineer identical physical depth.
+        <div className="mb-12 max-w-2xl">
+          <p className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-[#9ca3af] mb-4">
+            Playground
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink mb-4">
+            Build custom shadows
+          </h1>
+          <p className="text-[16px] text-muted leading-relaxed">
+            Compose multi-layer volumetric shadows in real time, then copy CSS or Tailwind values into your project.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          {/* Controls Column */}
-          <div className="lg:col-span-7 space-y-8">
-            
-            {/* Layers Panel */}
-            <div className="bg-slate-50 border border-slate-200 p-6 shadow-ui-card">
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center gap-3 text-slate-900">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-7 space-y-6">
+            <div className="bg-white border border-line rounded-2xl p-5 sm:p-6">
+              <div className="flex justify-between items-center mb-5">
+                <div className="flex items-center gap-2.5 text-ink">
                   <Layers size={18} />
-                  <h3 className="text-xs font-bold uppercase tracking-widest">Volumetric Layers</h3>
+                  <h3 className="text-sm font-semibold tracking-tight">Layers</h3>
                 </div>
-                <button 
+                <button
                   onClick={addLayer}
-                  className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-blueprint-accent hover:text-slate-900 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-ink transition-colors"
                 >
-                  <Plus size={14} /> Add Layer
+                  <Plus size={15} /> Add layer
                 </button>
               </div>
 
               <div className="space-y-2">
                 <AnimatePresence initial={false}>
                   {layers.map((layer, idx) => (
-                    <motion.div 
+                    <motion.div
                       key={layer.id}
-                      initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, height: 0, scale: 0.98 }}
                       animate={{ opacity: 1, height: 'auto', scale: 1 }}
-                      exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                      exit={{ opacity: 0, height: 0, scale: 0.98 }}
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
                       <button
                         onClick={() => setActiveIndex(idx)}
-                        className={`w-full flex items-center justify-between p-4 border transition-all ${
-                          activeIndex === idx 
-                            ? 'bg-white border-slate-900 shadow-ui-nav z-10 relative' 
-                            : 'bg-white/50 border-slate-200 hover:border-slate-400 text-slate-500'
+                        className={`w-full flex items-center justify-between p-3.5 rounded-xl border-2 transition-all ${
+                          activeIndex === idx
+                            ? 'bg-[#f6f6f5] border-[#b0b0b0]'
+                            : 'bg-white border-[#e8e8e6] hover:border-[#d4d4d4] text-muted'
                         }`}
                       >
-                        <div className="flex items-center gap-4">
-                          <span className={`text-[10px] font-mono tracking-wider ${activeIndex === idx ? 'text-blueprint-accent' : 'text-slate-400'}`}>
+                        <div className="flex items-center gap-3">
+                          <span className={`text-xs font-mono ${activeIndex === idx ? 'text-ink' : 'text-[#9ca3af]'}`}>
                             L{String(idx + 1).padStart(2, '0')}
                           </span>
-                          <span className="text-sm font-medium">
-                            {layer.inset ? 'Inset ' : ''}Shadow
+                          <span className={`text-sm font-medium ${activeIndex === idx ? 'text-ink' : ''}`}>
+                            {layer.inset ? 'Inset shadow' : 'Shadow'}
                           </span>
                         </div>
-                        <div className="flex items-center gap-4">
-                          <div className="w-4 h-4 rounded-full border border-slate-200 shadow-sm" style={{ backgroundColor: layer.color }}></div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-4 h-4 rounded-full border border-line" style={{ backgroundColor: layer.color }} />
                           {layers.length > 1 && (
-                            <div 
+                            <div
                               role="button"
                               tabIndex={0}
                               onClick={(e) => removeLayer(e, idx)}
-                              className="text-slate-400 hover:text-red-500 transition-colors p-1"
+                              className="text-[#9ca3af] hover:text-red-500 transition-colors p-1"
                             >
                               <Trash2 size={14} />
                             </div>
@@ -151,118 +147,115 @@ const Playground = () => {
               </div>
             </div>
 
-            {/* Active Layer Controls */}
-            <div className="bg-white p-8 border border-slate-200 shadow-ui-card">
-              <div className="flex justify-between items-center mb-8 pb-4 border-b border-slate-100">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900">
-                  Editing Layer {String(activeIndex + 1).padStart(2, '0')}
+            <div className="bg-white border border-line rounded-2xl p-5 sm:p-7">
+              <div className="flex justify-between items-center mb-6 pb-4 border-b border-line">
+                <h3 className="text-sm font-semibold tracking-tight text-ink">
+                  Editing layer {String(activeIndex + 1).padStart(2, '0')}
                 </h3>
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input 
-                    type="checkbox" 
-                    checked={activeLayer.inset} 
+                  <input
+                    type="checkbox"
+                    checked={activeLayer.inset}
                     onChange={(e) => updateLayer('inset', e.target.checked)}
-                    className="w-4 h-4 accent-slate-900"
+                    className="w-4 h-4 accent-ink"
                   />
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-slate-500">Inset</span>
+                  <span className="text-xs font-medium text-muted">Inset</span>
                 </label>
               </div>
 
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                    <span>X Offset</span>
-                    <span className="font-mono text-slate-900">{activeLayer.x}px</span>
+              <div className="space-y-7">
+                {[
+                  { key: 'x', label: 'X offset', min: -100, max: 100, value: activeLayer.x, unit: 'px', parse: parseInt },
+                  { key: 'y', label: 'Y offset', min: -100, max: 100, value: activeLayer.y, unit: 'px', parse: parseInt },
+                  { key: 'blur', label: 'Blur radius', min: 0, max: 200, value: activeLayer.blur, unit: 'px', parse: parseInt },
+                  { key: 'spread', label: 'Spread radius', min: -50, max: 50, value: activeLayer.spread, unit: 'px', parse: parseInt },
+                ].map((control) => (
+                  <div key={control.key} className="space-y-3">
+                    <div className="flex justify-between items-center text-xs font-medium text-muted">
+                      <span>{control.label}</span>
+                      <span className="font-mono text-ink">{control.value}{control.unit}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={control.min}
+                      max={control.max}
+                      value={control.value}
+                      onChange={(e) => updateLayer(control.key, control.parse(e.target.value))}
+                      className="w-full accent-ink"
+                    />
                   </div>
-                  <input type="range" min="-100" max="100" value={activeLayer.x} onChange={(e) => updateLayer('x', parseInt(e.target.value))} className="w-full accent-blueprint-accent" />
-                </div>
+                ))}
 
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                    <span>Y Offset</span>
-                    <span className="font-mono text-slate-900">{activeLayer.y}px</span>
-                  </div>
-                  <input type="range" min="-100" max="100" value={activeLayer.y} onChange={(e) => updateLayer('y', parseInt(e.target.value))} className="w-full accent-blueprint-accent" />
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                    <span>Blur Radius</span>
-                    <span className="font-mono text-slate-900">{activeLayer.blur}px</span>
-                  </div>
-                  <input type="range" min="0" max="200" value={activeLayer.blur} onChange={(e) => updateLayer('blur', parseInt(e.target.value))} className="w-full accent-blueprint-accent" />
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                    <span>Spread Radius</span>
-                    <span className="font-mono text-slate-900">{activeLayer.spread}px</span>
-                  </div>
-                  <input type="range" min="-50" max="50" value={activeLayer.spread} onChange={(e) => updateLayer('spread', parseInt(e.target.value))} className="w-full accent-blueprint-accent" />
-                </div>
-
-                <div className="grid grid-cols-2 gap-8 pt-4">
-                  <div className="space-y-4">
-                    <div className="text-[10px] uppercase font-bold tracking-widest text-slate-400">Shadow Color</div>
-                    <div className="flex items-center gap-4">
-                      <input type="color" value={activeLayer.color} onChange={(e) => updateLayer('color', e.target.value)} className="w-12 h-12 border border-slate-200 p-1 cursor-pointer" />
-                      <span className="font-mono text-sm text-slate-600 uppercase">{activeLayer.color}</span>
+                <div className="grid grid-cols-2 gap-6 pt-2">
+                  <div className="space-y-3">
+                    <div className="text-xs font-medium text-muted">Shadow color</div>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="color"
+                        value={activeLayer.color}
+                        onChange={(e) => updateLayer('color', e.target.value)}
+                        className="w-11 h-11 rounded-lg border border-line p-1 cursor-pointer bg-white"
+                      />
+                      <span className="font-mono text-sm text-ink-soft uppercase">{activeLayer.color}</span>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-widest text-slate-400">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center text-xs font-medium text-muted">
                       <span>Opacity</span>
-                      <span className="font-mono text-slate-900">{Math.round(activeLayer.opacity * 100)}%</span>
+                      <span className="font-mono text-ink">{Math.round(activeLayer.opacity * 100)}%</span>
                     </div>
-                    <input type="range" min="0" max="1" step="0.01" value={activeLayer.opacity} onChange={(e) => updateLayer('opacity', parseFloat(e.target.value))} className="w-full accent-blueprint-accent mt-4" />
+                    <input
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.01"
+                      value={activeLayer.opacity}
+                      onChange={(e) => updateLayer('opacity', parseFloat(e.target.value))}
+                      className="w-full accent-ink mt-3"
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Preview & Code Column */}
-          <div className="lg:col-span-5 sticky top-32 space-y-8">
-            <div className="aspect-square bg-slate-50 border border-slate-200 flex items-center justify-center p-20 relative overflow-hidden shadow-ui-card">
-              <div className="absolute inset-0 blueprint-bg opacity-[0.03] pointer-events-none"></div>
-              <div className="absolute top-4 left-4 text-[9px] font-mono text-slate-400">LIVE_PREVIEW</div>
-              <div 
-                className="w-full h-full bg-white transition-shadow duration-200 ease-out"
+          <div className="lg:col-span-5 sticky top-28 space-y-5">
+            <div className="aspect-square bg-[#f6f6f5] border border-line rounded-2xl flex items-center justify-center p-14 sm:p-16 relative overflow-hidden">
+              <div className="absolute top-4 left-4 text-[11px] font-medium text-[#9ca3af]">Live preview</div>
+              <div
+                className="w-full h-full bg-white rounded-xl transition-shadow duration-200 ease-out"
                 style={{ boxShadow: styleShadowStr }}
-              ></div>
+              />
             </div>
 
-            <div className="space-y-4">
-              <div className="bg-slate-900 p-6 rounded-none relative shadow-ui-terminal">
-                 <div className="text-[9px] text-blueprint-accent font-bold tracking-widest mb-4 uppercase">Raw CSS Generation</div>
-                 <pre className="text-slate-300 font-mono text-[13px] overflow-x-auto whitespace-pre-wrap leading-relaxed pb-4">
-                   <code>{cssValue}</code>
-                 </pre>
-                 <button 
-                  onClick={() => copyToClipboard(cssValue, 'css')}
-                  className="absolute top-6 right-6 p-2 text-slate-500 hover:text-white transition-colors"
-                  aria-label="Copy CSS"
-                 >
-                   {copiedCSS ? <Check size={16} className="text-blueprint-accent" /> : <Copy size={16} />}
-                 </button>
-              </div>
+            <div className="bg-ink rounded-2xl p-5 relative">
+              <div className="text-[11px] text-[#9ca3af] font-medium tracking-wide mb-3">Raw CSS</div>
+              <pre className="text-neutral-300 font-mono text-[13px] overflow-x-auto whitespace-pre-wrap leading-relaxed pr-8">
+                <code>{cssValue}</code>
+              </pre>
+              <button
+                onClick={() => copyToClipboard(cssValue, 'css')}
+                className="absolute top-4 right-4 p-2 text-[#9ca3af] hover:text-white transition-colors"
+                aria-label="Copy CSS"
+              >
+                {copiedCSS ? <Check size={16} /> : <Copy size={16} />}
+              </button>
+            </div>
 
-              <div className="bg-slate-50 border border-slate-200 p-6 rounded-none relative">
-                 <div className="text-[9px] text-slate-400 font-bold tracking-widest mb-4 uppercase">Tailwind Arbitration</div>
-                 <pre className="text-slate-900 font-mono text-[13px] overflow-x-auto whitespace-pre-wrap break-all leading-relaxed pb-4">
-                   <code>{tailwindValue}</code>
-                 </pre>
-                 <button 
-                  onClick={() => copyToClipboard(tailwindValue, 'tw')}
-                  className="absolute top-6 right-6 p-2 text-slate-400 hover:text-slate-900 transition-colors"
-                  aria-label="Copy Tailwind"
-                 >
-                   {copiedTW ? <Check size={16} className="text-blueprint-accent" /> : <Copy size={16} />}
-                 </button>
-              </div>
+            <div className="bg-white border border-line rounded-2xl p-5 relative">
+              <div className="text-[11px] text-[#9ca3af] font-medium tracking-wide mb-3">Tailwind value</div>
+              <pre className="text-ink font-mono text-[13px] overflow-x-auto whitespace-pre-wrap break-all leading-relaxed pr-8">
+                <code>{tailwindValue}</code>
+              </pre>
+              <button
+                onClick={() => copyToClipboard(tailwindValue, 'tw')}
+                className="absolute top-4 right-4 p-2 text-[#9ca3af] hover:text-ink transition-colors"
+                aria-label="Copy Tailwind"
+              >
+                {copiedTW ? <Check size={16} /> : <Copy size={16} />}
+              </button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
