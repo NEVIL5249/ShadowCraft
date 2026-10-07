@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { shadows } from '../data/shadows';
 import ShadowCard from '../components/ShadowCard';
 import { Search, Filter, X, Plus } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 const CATEGORIES = [
   'ALL', 'BUTTON', 'ELEVATION', 'INSET', 'GLASS', 'FLOATING', 'AMBIENT',

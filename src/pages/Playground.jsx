@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check, Plus, Trash2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 const getLayerGridClass = (count) => {
   if (count <= 1) return 'grid-cols-1';

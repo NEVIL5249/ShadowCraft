@@ -1,6 +1,15 @@
 import React from 'react';
 import { Layers, Zap, Code2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'motion/react';
+import {
+  Reveal,
+  RevealWords,
+  Stagger,
+  fadeUp,
+  fadeUpSoft,
+  popIn,
+  springSoft,
+} from '../lib/motion';
 
 const iconShadow = `
   inset 0px 2px 4px 0px rgba(255, 255, 255, 0.4),
@@ -34,49 +43,43 @@ const features = [
 ];
 
 const Features = () => {
+  const reduce = useReducedMotion();
+
   return (
     <section className="py-24 lg:py-28 bg-white border-y border-line">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-2xl mb-14 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink mb-4">
-            Depth that feels intentional
+            <RevealWords text="Depth that feels intentional" />
           </h2>
-          <p className="text-base sm:text-lg text-muted leading-relaxed">
-            Stop guessing box-shadow values. ShadowCraft gives you a curated system for elevation, insets, and floating UI.
-          </p>
+          <Reveal variants={fadeUpSoft} delay={0.06}>
+            <p className="text-base sm:text-lg text-muted leading-relaxed">
+              Stop guessing box-shadow values. ShadowCraft gives you a curated system for elevation, insets, and floating UI.
+            </p>
+          </Reveal>
         </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.12 } },
-          }}
+        <Stagger
+          staggerChildren={0.12}
+          delayChildren={0.04}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
         >
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
-              <motion.div
-                key={feature.title}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-                  },
-                }}
-                className="group"
-              >
-                <div
+              <motion.div key={feature.title} variants={fadeUp} className="group">
+                <motion.div
+                  variants={popIn}
                   className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-white"
                   style={{ boxShadow: iconShadow }}
+                  whileHover={
+                    reduce
+                      ? undefined
+                      : { y: -3, rotate: -3, transition: springSoft }
+                  }
                 >
                   <Icon size={20} strokeWidth={1.75} />
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold text-ink mb-2 tracking-tight">
                   {feature.title}
                 </h3>
@@ -86,7 +89,7 @@ const Features = () => {
               </motion.div>
             );
           })}
-        </motion.div>
+        </Stagger>
       </div>
     </section>
   );

@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Reveal, Stagger, fadeUp, fadeUpSoft, viewLoose } from '../lib/motion';
+import { motion } from 'motion/react';
 
 const Footer = ({ onOpenContact }) => {
   return (
     <footer className="bg-white py-16 border-t border-line">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-14">
-          <div className="md:col-span-2">
+        <Stagger
+          staggerChildren={0.08}
+          viewport={viewLoose}
+          className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-14"
+        >
+          <motion.div variants={fadeUp} className="md:col-span-2">
             <div className="mb-5">
               <img
                 src="/brand/shadowcraft-logo-full.png"
@@ -23,9 +29,9 @@ const Footer = ({ onOpenContact }) => {
             >
               Contact
             </button>
-          </div>
+          </motion.div>
 
-          <div className="space-y-4">
+          <motion.div variants={fadeUpSoft} className="space-y-4">
             <h5 className="text-sm font-semibold text-ink">Connect</h5>
             <ul className="space-y-3 text-sm text-muted">
               <li>
@@ -44,22 +50,22 @@ const Footer = ({ onOpenContact }) => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="space-y-4">
+          <motion.div variants={fadeUpSoft} className="space-y-4">
             <h5 className="text-sm font-semibold text-ink">Legal</h5>
             <ul className="space-y-3 text-sm text-muted">
               <li><Link className="hover:text-ink transition-colors" to="/legal#terms">Terms</Link></li>
               <li><Link className="hover:text-ink transition-colors" to="/legal#privacy">Privacy</Link></li>
               <li><Link className="hover:text-ink transition-colors" to="/legal#security">Security</Link></li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </Stagger>
 
-        <div className="pt-8 border-t border-line flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
+        <Reveal variants={fadeUpSoft} viewport={viewLoose} className="pt-8 border-t border-line flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
           <span>© 2026 ShadowCraft</span>
           <span>Built by @nevil5249</span>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );
