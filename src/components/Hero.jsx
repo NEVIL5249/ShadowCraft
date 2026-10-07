@@ -162,7 +162,8 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-3 sm:mt-4 overflow-x-auto scrollbar-minimal">
+            {/* Small devices: tabbing */}
+            <div className="mt-3 sm:mt-4 lg:hidden overflow-x-auto scrollbar-minimal">
               <div className="inline-flex min-w-full sm:min-w-0 sm:flex sm:flex-wrap gap-1.5 p-1 rounded-xl bg-[#f3f3f1] border border-line">
                 {presets.map((preset) => {
                   const isActive = preset.id === activePreset;
@@ -182,6 +183,39 @@ const Hero = () => {
                   );
                 })}
               </div>
+            </div>
+
+            {/* Big devices: shadow preview buttons */}
+            <div className="mt-4 hidden lg:grid grid-cols-6 gap-3">
+              {presets.map((preset) => {
+                const isActive = preset.id === activePreset;
+                return (
+                  <button
+                    key={preset.id}
+                    type="button"
+                    onClick={() => setActivePreset(preset.id)}
+                    className={`rounded-2xl bg-[#f6f6f5] p-3 text-left transition-all duration-200 ${
+                      isActive
+                        ? 'border-2 border-[#b0b0b0]'
+                        : 'border-2 border-[#e8e8e6] hover:border-[#d4d4d4]'
+                    }`}
+                  >
+                    <div
+                      className="h-11 rounded-xl mb-2.5"
+                      style={{
+                        boxShadow: preset.shadow,
+                        background:
+                          preset.id === 'glass'
+                            ? 'linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,245,245,0.85))'
+                            : '#ffffff',
+                      }}
+                    />
+                    <span className="block text-xs font-medium text-[#4b5563] truncate">
+                      {preset.label}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         </div>
